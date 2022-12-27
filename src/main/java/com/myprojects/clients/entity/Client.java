@@ -1,5 +1,7 @@
 package com.myprojects.clients.entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +19,8 @@ public class Client {
     @Column(nullable = false)
     private String telephone;
     private String adress;
+    private Float salary;
+    private LocalDate birthDate;
 
     public Long getId() {
         return id;
@@ -50,4 +54,20 @@ public class Client {
         this.adress = adress;
     }
 
+    public Float getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Float salary) {
+        this.salary = salary;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+    
 }
