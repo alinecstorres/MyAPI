@@ -37,6 +37,11 @@ public class ClientRest {
         return repositoryClient.findAvgSalary();
     }
 
+    @GetMapping("/over21")
+    public List<Client> getOver21() {
+        return repositoryClient.findOver21();
+    }
+
     @PostMapping
     public void saveNew(@RequestBody Client client) {
         repositoryClient.save(client);
