@@ -1,6 +1,7 @@
 package com.myprojects.clients;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,9 +22,19 @@ public class ClientRest {
     @Autowired
     private RepositoryClient repositoryClient;
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Client> showAll() {
         return repositoryClient.findAll();
+    }
+
+    @GetMapping("/id")
+    public Optional<Client> findById(Long id) {
+        return repositoryClient.findById(id);
+    }
+
+    @GetMapping("/values")
+    public Float getAvgSalary() {
+        return repositoryClient.findAvgSalary();
     }
 
     @PostMapping
@@ -31,13 +42,13 @@ public class ClientRest {
         repositoryClient.save(client);
     }
 
-    @PutMapping
+    @PutMapping("/id")
     public void alterOne(@RequestBody Client client) {
         if (client.getId() > 0)
             repositoryClient.save(client);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/id")
     public void deleteOne(@RequestBody Client client) {
         repositoryClient.delete(client);
     }

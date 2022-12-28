@@ -69,5 +69,5 @@ public class Client {
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
-    
+
 }
