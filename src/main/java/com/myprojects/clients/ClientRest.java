@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.myprojects.clients.Service.ClientService;
 import com.myprojects.clients.database.RepositoryClient;
 import com.myprojects.clients.entity.Client;
 
@@ -21,6 +22,9 @@ public class ClientRest {
 
     @Autowired
     private RepositoryClient repositoryClient;
+
+    @Autowired
+    private ClientService clientService;
 
     @GetMapping("/all")
     public List<Client> showAll() {
@@ -43,8 +47,8 @@ public class ClientRest {
     }
 
     @PostMapping
-    public void saveNew(@RequestBody Client client) {
-        repositoryClient.save(client);
+    public Client saveNew(@RequestBody Client client) {
+        return clientService.save(client);
     }
 
     @PutMapping("/id")
